@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Conversor de Moedas</string>
+    <string name="value_main_activity_hint">Valor</string>
+    <string name="convert_to_dropdown_hint">De:</string>
+    <string name="convert_from_dropdown_hint">Para:</string>
+    <string name="converter_button_rs">Converter</string>
+    <string name="coin_image_content_description">Imagem de moeda</string>
+</resources>
