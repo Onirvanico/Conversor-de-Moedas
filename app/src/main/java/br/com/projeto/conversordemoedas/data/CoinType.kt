@@ -8,5 +8,9 @@ enum class CoinType(val locale: Locale) {
     EUR(Locale.UK),
     JYP(Locale.JAPAN),
     CAD(Locale.CANADA),
-    ARS(Locale("es", "AR"))
+    ARS(Locale("es", "AR"));
+
+    companion object {
+        fun getByName(name: String) = values().find{ it.name == name} ?: BRL
+    }
 }

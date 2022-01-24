@@ -13,6 +13,7 @@ class SaveExchangeUseCase(
     override suspend fun execute(param: CoinContent): Flow<Unit> {
         return flow {
             repository.save(param)
+            emit(Unit)
         }
     }
 }

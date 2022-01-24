@@ -128,6 +128,20 @@
             app:layout_constraintStart_toStartOf="@+id/start_guide"
             app:layout_constraintTop_toBottomOf="@+id/convert_to_layout_option" />
 
+        <Button
+            android:id="@+id/save_exchange_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#A1958F"
+            android:text="Salvar este valor"
+            android:enabled="@{!textResult.text.toString().empty}"
+            android:textAllCaps="false"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/end_guide"
+            app:layout_constraintStart_toStartOf="@+id/start_guide"
+            app:layout_constraintTop_toBottomOf="@+id/converter_button" />
+
         <TextView
             android:id="@+id/text_result"
             android:layout_width="wrap_content"
@@ -135,7 +149,7 @@
             tools:text="3,27"
             style="@style/TextAppearance.MaterialComponents.Headline3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/converter_button"
+            app:layout_constraintTop_toBottomOf="@+id/save_exchange_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 

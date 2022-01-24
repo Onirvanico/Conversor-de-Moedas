@@ -1,6 +1,7 @@
 package br.com.projeto.conversordemoedas.data.repository
 
 
+import android.util.Log
 import br.com.projeto.conversordemoedas.core.exceptions.RemoteException
 import br.com.projeto.conversordemoedas.data.db.ExchangeDataBase
 import br.com.projeto.conversordemoedas.data.model.CoinContent
@@ -28,6 +29,7 @@ class CoinRepositoryImp(
          } catch (ex: HttpException) {
             val errorJson = ex.response()?.errorBody().toString()
              val fromJson = Gson().fromJson(errorJson, ErrorResponse::class.java)
+             Log.i("ErrorResponse", fromJson.message)
              throw RemoteException(fromJson.message)
          }
     }

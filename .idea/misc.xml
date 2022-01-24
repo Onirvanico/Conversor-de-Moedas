@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bilbo/AndroidStudioProjects/Conversor-de-Moedas/app/src/main/res/layout/activity_historic.xml" value="0.21" />
+        <entry key="..\:/Users/bilbo/AndroidStudioProjects/Conversor-de-Moedas/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/bilbo/AndroidStudioProjects/Conversor-de-Moedas/app/src/main/res/layout/exchange_historic_item.xml" value="0.33" />
+        <entry key="..\:/Users/bilbo/AndroidStudioProjects/Conversor-de-Moedas/app/src/main/res/menu/historic_menu.xml" value="0.171875" />
         <entry key="..\:/Users/neath/.gradle/caches/transforms-3/2f509e5679dd7cedc8b6724d4893a880/transformed/appcompat-1.4.0/res/layout/support_simple_spinner_dropdown_item.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/neath/Desktop/nova-particao/AndroidProjects/ConversordeMoedas/app/src/main/res/layout/activity_main.xml" value="0.22083333333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

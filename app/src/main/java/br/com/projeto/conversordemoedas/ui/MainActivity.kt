@@ -1,7 +1,11 @@
 package br.com.projeto.conversordemoedas.ui
 
 import android.R
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import br.com.projeto.conversordemoedas.core.extensions.formatCurrency
@@ -26,13 +30,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
+        setSupportActionBar(binding.toolbarMainActivity)
         configObserver()
 
         val adapter = createAdapterDropDown()
         setAdaperDropDown(adapter)
 
         configConverterButton()
+
+        binding.saveExchangeButton.setOnClickListener {
+            val value = viewModel.state.value
+            (value as? MainViewModel.State.Success)?.let {
+                viewModel.saveExchange(it.value)
+            }
+        }
 
     }
 
@@ -59,11 +70,13 @@ class MainActivity : AppCompatActivity() {
                     loadingDialog.dismiss()
                     val result = it.value.bid *  binding.textLayoutInputValue.text.toDouble()
 
-                    val coinType = CoinType.values().find {
-                        it.name == binding.convertToLayoutOption.text
-                    } ?: CoinType.BRL
+                    val coinType = CoinType.getByName(binding.convertToLayoutOption.text)
 
                     binding.textResult.text = result.formatCurrency(coinType.locale)
+                }
+                is MainViewModel.State.Saved -> {
+                    loadingDialog.dismiss()
+                    createDialog { setMessage("Êxito ao salvar o valor") }.show()
                 }
             }
         }
@@ -83,5 +96,19 @@ class MainActivity : AppCompatActivity() {
             CoinType.values()
         )
         return adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(br.com.projeto.conversordemoedas.R.menu.historic_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == br.com.projeto.conversordemoedas.R.id.historic_option_menu)
+            startActivity(Intent(this, HistoricActivity::class.java))
+
+        return super.onOptionsItemSelected(item)
     }
 }

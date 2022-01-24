@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import br.com.projeto.conversordemoedas.data.db.dao.ExchangeDAO
 import br.com.projeto.conversordemoedas.data.model.CoinContent
 
-@Database(entities = [CoinContent::class], version = 1)
+@Database(entities = [CoinContent::class], version = 2, exportSchema = false)
 abstract class ExchangeDataBase : RoomDatabase() {
 
     companion object {
@@ -15,7 +15,7 @@ abstract class ExchangeDataBase : RoomDatabase() {
             return Room.databaseBuilder(
                 context.applicationContext,
                 ExchangeDataBase::class.java,
-                "exchange_db"
+                "exchange_database"
             )
                 .fallbackToDestructiveMigration()
                 .build()
