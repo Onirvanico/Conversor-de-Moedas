@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import br.com.projeto.conversordemoedas.core.extensions.format
 import br.com.projeto.conversordemoedas.core.extensions.formatCurrency
 import br.com.projeto.conversordemoedas.data.CoinType
 import br.com.projeto.conversordemoedas.data.model.CoinContent
@@ -15,6 +16,7 @@ class HistoricAdapter() :
     ListAdapter<CoinContent, HistoricAdapter.HistoricViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoricViewHolder {
+        Log.i("LIST", getItem(0).name)
         val inflater = LayoutInflater.from(parent.context)
         val binding = ExchangeHistoricItemBinding.inflate(inflater, parent, false)
 
@@ -35,6 +37,7 @@ class HistoricAdapter() :
             Log.i("COIN", content.name)
             binding.exchangeResearchItem.text = content.name
             binding.exchangeValueItem.text = content.bid.formatCurrency(coin.locale)
+            binding.timeItem.text = content.time.format()
         }
     }
 

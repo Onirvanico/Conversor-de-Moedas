@@ -1,157 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        android:fillViewport="true">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_main_activity"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#1A5857"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Conversor de Moedas"
-            app:titleTextColor="@color/white" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/start_guide"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/main_activity_padding" />
+            tools:context=".ui.MainActivity">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/end_guide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/main_activity_padding" />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_main_activity"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#1A5857"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Conversor de Moedas"
+                app:titleTextColor="@color/white" />
 
-        <ImageView
-            android:id="@+id/coin_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/coin_icon"
-            android:layout_margin="20dp"
-            android:contentDescription="@string/coin_image_content_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_main_activity"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_layout_input_value"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/end_guide"
-            app:layout_constraintStart_toStartOf="@+id/start_guide"
-            app:layout_constraintTop_toBottomOf="@+id/coin_image">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_input_value"
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guide"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/value_main_activity_hint"
-                android:inputType="numberDecimal" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/main_activity_padding" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/convert_from_layout_option"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintEnd_toStartOf="@+id/convert_to_layout_option"
-            app:layout_constraintStart_toStartOf="@id/start_guide"
-            app:layout_constraintTop_toBottomOf="@+id/text_layout_input_value">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/convert_from_option"
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guide"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:focusable="false"
-                android:hint="@string/convert_to_dropdown_hint"
-                android:inputType="none"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/main_activity_padding" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/coin_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:contentDescription="@string/coin_image_content_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_main_activity"
+                app:srcCompat="@drawable/coin_icon" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/convert_to_layout_option"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintEnd_toEndOf="@id/end_guide"
-            app:layout_constraintStart_toEndOf="@+id/convert_from_layout_option"
-            app:layout_constraintTop_toBottomOf="@+id/text_layout_input_value">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_input_value"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/end_guide"
+                app:layout_constraintStart_toStartOf="@+id/start_guide"
+                app:layout_constraintTop_toBottomOf="@+id/coin_image">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/convert_to_option"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ellipsize="end"
-                android:focusable="false"
-                android:hint="@string/convert_from_dropdown_hint"
-                android:inputType="none"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/value_main_activity_hint"
+                    android:inputType="numberDecimal" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/convert_from_layout_option"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/convert_to_layout_option"
+                app:layout_constraintStart_toStartOf="@id/start_guide"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_input_value">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/convert_from_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:focusable="false"
+                    android:hint="@string/convert_to_dropdown_hint"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:dropDownSelector="@color/cardview_shadow_start_color"
+                    android:padding="16dp"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/convert_to_layout_option"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="@id/end_guide"
+                app:layout_constraintStart_toEndOf="@+id/convert_from_layout_option"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_input_value">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/convert_to_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:focusable="false"
+                    android:hint="@string/convert_from_dropdown_hint"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:padding="16dp"
+                    android:dropDownSelector="@color/cardview_shadow_start_color"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/converter_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#83958F"
-            android:text="@string/converter_button_rs"
-            android:enabled="@{!textInputValue.text.toString().empty}"
-            android:textAllCaps="false"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/end_guide"
-            app:layout_constraintStart_toStartOf="@+id/start_guide"
-            app:layout_constraintTop_toBottomOf="@+id/convert_to_layout_option" />
+            <Button
+                android:id="@+id/converter_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#83958F"
+                android:enabled="@{!textInputValue.text.toString().empty}"
+                android:padding="10dp"
+                android:text="@string/converter_button_rs"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/end_guide"
+                app:layout_constraintStart_toStartOf="@+id/start_guide"
+                app:layout_constraintTop_toBottomOf="@+id/convert_to_layout_option" />
 
-        <Button
-            android:id="@+id/save_exchange_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#A1958F"
-            android:text="Salvar este valor"
-            android:enabled="@{!textResult.text.toString().empty}"
-            android:textAllCaps="false"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/end_guide"
-            app:layout_constraintStart_toStartOf="@+id/start_guide"
-            app:layout_constraintTop_toBottomOf="@+id/converter_button" />
+            <Button
+                android:id="@+id/save_exchange_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#A1958F"
+                android:enabled="@{!textResult.text.toString().empty}"
+                android:padding="10dp"
+                android:text="@string/bt_save"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/end_guide"
+                app:layout_constraintStart_toStartOf="@+id/start_guide"
+                app:layout_constraintTop_toBottomOf="@+id/converter_button" />
 
-        <TextView
-            android:id="@+id/text_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="3,27"
-            style="@style/TextAppearance.MaterialComponents.Headline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/save_exchange_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/text_result"
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/save_exchange_button"
+                tools:text="3,27" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

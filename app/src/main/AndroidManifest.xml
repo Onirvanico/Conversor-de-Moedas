@@ -7,11 +7,13 @@
     <application
         android:name=".CoinApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:fullBackupOnly="true"
+        android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConversorDeMoedas">
+
         <activity
             android:name=".ui.HistoricActivity"
             android:exported="true" />

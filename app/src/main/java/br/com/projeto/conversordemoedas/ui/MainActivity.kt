@@ -2,12 +2,15 @@ package br.com.projeto.conversordemoedas.ui
 
 import android.R
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.ViewStub
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import br.com.projeto.conversordemoedas.core.extensions.formatCurrency
 import br.com.projeto.conversordemoedas.core.extensions.hideSoftKeyboard
 import br.com.projeto.conversordemoedas.core.extensions.text
@@ -17,6 +20,7 @@ import br.com.projeto.conversordemoedas.data.CoinType
 import br.com.projeto.conversordemoedas.databinding.ActivityMainBinding
 import br.com.projeto.conversordemoedas.presentation.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    lateinit var adapterTo: ArrayAdapter<CoinType>
+    lateinit var adapterFrom: ArrayAdapter<CoinType>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +39,26 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarMainActivity)
         configObserver()
 
-        val adapter = createAdapterDropDown()
-        setAdaperDropDown(adapter)
+        val firstAdapter = createFirstAdapterDropDow()
+        setAdapterDropDown(firstAdapter)
+
+
+        binding.convertFromOption.addTextChangedListener {
+            adapterTo = createAdapterDropDown(it?.get(0))
+            setAdaperDropDownTo(adapterTo)
+        }
+
+        binding.convertToOption.addTextChangedListener {
+            adapterFrom = createAdapterDropDown(it?.get(0))
+            setAdaperDropDownFrom(adapterFrom)
+        }
 
         configConverterButton()
 
         binding.saveExchangeButton.setOnClickListener {
             val value = viewModel.state.value
             (value as? MainViewModel.State.Success)?.let {
+                it.value.time = Calendar.getInstance().time
                 viewModel.saveExchange(it.value)
             }
         }
@@ -76,26 +94,45 @@ class MainActivity : AppCompatActivity() {
                 }
                 is MainViewModel.State.Saved -> {
                     loadingDialog.dismiss()
-                    createDialog { setMessage("Êxito ao salvar o valor") }.show()
+                    createDialog { setMessage("Valor salvo com sucesso!") }.show()
                 }
             }
         }
     }
 
-    private fun setAdaperDropDown(adapter: ArrayAdapter<CoinType>) {
+    private fun setAdaperDropDownFrom(adapter: ArrayAdapter<CoinType>) {
         binding.convertFromOption.setAdapter(adapter)
-        binding.convertToOption.setAdapter(adapter)
-        binding.convertFromOption.setText(CoinType.BRL.name, false)
-        binding.convertToOption.setText(CoinType.USD.name, false)
     }
 
-    private fun createAdapterDropDown(): ArrayAdapter<CoinType> {
+    private fun setAdaperDropDownTo(adapter: ArrayAdapter<CoinType>) {
+        binding.convertToOption.setAdapter(adapter)
+    }
+
+    private fun createAdapterDropDown(char: Char?): ArrayAdapter<CoinType> {
+        val coinType = CoinType.values().filter { it.name[0] != char }
+        val adapter = ArrayAdapter(
+            baseContext,
+            R.layout.simple_list_item_1,
+            coinType
+        )
+        return adapter
+    }
+
+    private fun createFirstAdapterDropDow(): ArrayAdapter<CoinType> {
         val adapter = ArrayAdapter(
             baseContext,
             R.layout.simple_list_item_1,
             CoinType.values()
         )
+
         return adapter
+    }
+
+    private fun setAdapterDropDown(adapter: ArrayAdapter<CoinType>) {
+        binding.convertToOption.setAdapter(adapter)
+        binding.convertToOption.setText(CoinType.USD.name, false)
+        binding.convertFromOption.setAdapter(adapter)
+        binding.convertFromOption.setText(CoinType.BRL.name, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

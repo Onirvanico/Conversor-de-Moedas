@@ -6,4 +6,7 @@
     <string name="converter_button_rs">Converter</string>
     <string name="coin_image_content_description">Imagem de moeda</string>
     <string name="historic_title_menu">histórico</string>
+    <string name="bt_save">Salvar cotação</string>
+    <string name="text_info_no_list">Quando salvar uma cotação, ela aparecerá aqui.</string>
+    <string name="empty_list_image">Imagem de lista vazia</string>
 </resources>

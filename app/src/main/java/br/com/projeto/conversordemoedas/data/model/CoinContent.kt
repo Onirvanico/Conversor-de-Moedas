@@ -2,6 +2,8 @@ package br.com.projeto.conversordemoedas.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
+import kotlin.collections.HashMap
 
 typealias CoinContentResponse = HashMap<String, CoinContent>
 
@@ -13,5 +15,5 @@ data class CoinContent (
     val codein: String,
     val name: String,
     val bid: Double,
-    val timestamp: String
+    var time: Date
 )
