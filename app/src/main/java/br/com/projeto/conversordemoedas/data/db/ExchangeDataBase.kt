@@ -14,7 +14,7 @@ import br.com.projeto.tasks.database.converter.DateConverter
 abstract class ExchangeDataBase : RoomDatabase() {
 
     companion object {
-        fun getInstace(context: Context): ExchangeDataBase {
+        fun getInstance(context: Context): ExchangeDataBase {
             return Room.databaseBuilder(
                 context.applicationContext,
                 ExchangeDataBase::class.java,

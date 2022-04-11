@@ -50,7 +50,7 @@ object DataModules {
 
     private fun dataBaseModule(): Module {
         return module {
-            single { ExchangeDataBase.getInstace(androidContext()) }
+            single { ExchangeDataBase.getInstance(androidContext()) }
         }
     }
 

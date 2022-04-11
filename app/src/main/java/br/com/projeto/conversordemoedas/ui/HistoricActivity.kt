@@ -70,7 +70,8 @@ class HistoricActivity : AppCompatActivity() {
                 loadingDialog.dismiss()
                 createDialog {
                     setMessage(it.error.message)
-                }
+                }.show()
+                showEmptyList()
             }
             is HistoricViewModel.State.Success -> {
                 loadingDialog.dismiss()
